@@ -1,1 +1,1 @@
-message for repository
+message for repository (есть еще текстовый файл, но он в gitignore)
