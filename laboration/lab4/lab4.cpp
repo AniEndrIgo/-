@@ -3,34 +3,35 @@
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    const int A = 4;
-    int b, c, g, a;
+    const int G = 4;
     int minB = 9;
     int minA = 9;
     int sum = 0;
     std::cout << "введи 4 числа:" << std::endl;
-    std::cin >> b >> c >> g >> a;
-    int massiv[A]{ b, c, g, a };
+    int massiv[G];
+    for (int i = 0; i < 4; i++) {
+        std::cin >> massiv[i];
+    }
     std::cout << "массив = ";
     for (int i = 0; i < 4; i++) {
         std::cout << massiv[i] << " ";
     }
     std::cout << std::endl;
-    while (b > 0) {
-        int B = b % 10;
+    while (massiv[0] > 0) {
+        int B = massiv[0] % 10;
         if (minB > B)
             minB = B;
-        b /= 10;
+        massiv[0] /= 10;
     }
-    while (a > 0) {
-        int A = a % 10;
+    while (massiv[G - 1] > 0) {
+        int A = massiv[G - 1] % 10;
         if (minA > A)
             minA = A;
-        a /= 10;
+        massiv[G - 1] /= 10;
     }
     if (minA == minB) {
-        for (int i = 0; i < A - 1; i++) {
-            for (int j = i + 1; j < A; j++) {
+        for (int i = 0; i < G - 1; i++) {
+            for (int j = i + 1; j < G; j++) {
                 if (massiv[i] > massiv[j]) {
                     std::swap(massiv[i], massiv[j]);
                 }
@@ -49,7 +50,7 @@ int main()
             std::cin >> mat[i][j];
         }
     }
-    int min1 = 10000;
+    int min1 = std::numeric_limits<int>::max();
     int minsumm = 0;
     for (int i = 0; i < strok; i++) {
         int sum = 0;
