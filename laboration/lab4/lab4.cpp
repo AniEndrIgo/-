@@ -8,11 +8,14 @@ int main()
     int minB = 9;
     int minA = 9;
     int sum = 0;
+    std::cout << "введи 4 числа:" << std::endl;
     std::cin >> b >> c >> g >> a;
     int massiv[A]{ b, c, g, a };
+    std::cout << "массив = ";
     for (int i = 0; i < 4; i++) {
         std::cout << massiv[i] << " ";
     }
+    std::cout << std::endl;
     while (b > 0) {
         int B = b % 10;
         if (minB > B)
@@ -38,6 +41,7 @@ int main()
             std::cout << massiv[i] << " ";
         }
     }
+    std::cout << "введи матрицу 3 на 4:" << std::endl;
     const int strok = 3, stolb = 4;
     int mat[strok][stolb];
     for (int i = 0; i < strok; ++i) {
