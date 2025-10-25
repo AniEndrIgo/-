@@ -7,6 +7,7 @@ int main()
     int minB = 9;
     int minA = 9;
     int sum = 0;
+   
     std::cout << "введи 4 числа:" << std::endl;
     int massiv[G];
     for (int i = 0; i < 4; i++) {
@@ -17,17 +18,19 @@ int main()
         std::cout << massiv[i] << " ";
     }
     std::cout << std::endl;
-    while (massiv[0] > 0) {
-        int B = massiv[0] % 10;
+    int V = massiv[0];
+    while (massiv[V] > 0) {
+        int B = massiv[V] % 10;
         if (minB > B)
             minB = B;
-        massiv[0] /= 10;
+        massiv[V] /= 10;
     }
-    while (massiv[G - 1] > 0) {
-        int A = massiv[G - 1] % 10;
+    int V1 = massiv[G - 1];
+    while (massiv[V1] > 0) {
+        int A = massiv[V1] % 10;
         if (minA > A)
             minA = A;
-        massiv[G - 1] /= 10;
+        massiv[V1] /= 10;
     }
     if (minA == minB) {
         for (int i = 0; i < G - 1; i++) {
