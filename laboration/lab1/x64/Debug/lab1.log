@@ -1,0 +1,3 @@
+﻿  lab1.cpp
+D:\laboration\lab1\lab1.cpp(19,12): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+  lab1.vcxproj -> D:\laboration\x64\Debug\lab1.exe
