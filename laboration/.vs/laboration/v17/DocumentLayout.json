@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{F23015E8-E6B6-4AA9-B58B-E200A7DE2D27}|lab4\\lab4.vcxproj|solutionrelative:lab4\\lab4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6DC3F38-CA1B-4AA5-B949-614328C4F34C}|lab2\\lab2.vcxproj|C:\\github\\-\\laboration\\lab2\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{B6DC3F38-CA1B-4AA5-B949-614328C4F34C}|lab2\\lab2.vcxproj|solutionrelative:lab2\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F00F8602-3EBE-468A-8761-80800899FF33}|lab5\\lab5.vcxproj|C:\\github\\-\\laboration\\lab5\\lab5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F00F8602-3EBE-468A-8761-80800899FF33}|lab5\\lab5.vcxproj|solutionrelative:lab5\\lab5.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A9CAE803-1BEF-43E5-89CA-0F370A5027C0}|lab1\\lab1.vcxproj|C:\\github\\-\\laboration\\lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{A9CAE803-1BEF-43E5-89CA-0F370A5027C0}|lab1\\lab1.vcxproj|solutionrelative:lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6DC3F38-CA1B-4AA5-B949-614328C4F34C}|lab2\\lab2.vcxproj|C:\\github\\-\\laboration\\lab2\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{B6DC3F38-CA1B-4AA5-B949-614328C4F34C}|lab2\\lab2.vcxproj|solutionrelative:lab2\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +26,22 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "lab5.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration\\lab5\\lab5.cpp",
+              "RelativeDocumentMoniker": "lab5\\lab5.cpp",
+              "ToolTip": "C:\\github\\-\\laboration\\lab5\\lab5.cpp",
+              "RelativeToolTip": "lab5\\lab5.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-27T18:08:03.315Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -32,14 +50,14 @@
               "RelativeDocumentMoniker": "lab4\\lab4.cpp",
               "ToolTip": "C:\\github\\-\\laboration\\lab4\\lab4.cpp",
               "RelativeToolTip": "lab4\\lab4.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-25T07:16:02.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "lab2.cpp",
               "DocumentMoniker": "C:\\github\\-\\laboration\\lab2\\lab2.cpp",
               "RelativeDocumentMoniker": "lab2\\lab2.cpp",
@@ -57,9 +75,10 @@
               "RelativeDocumentMoniker": "lab1\\lab1.cpp",
               "ToolTip": "C:\\github\\-\\laboration\\lab1\\lab1.cpp",
               "RelativeToolTip": "lab1\\lab1.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-25T16:02:46.485Z"
+              "WhenOpened": "2025-09-25T16:02:46.485Z",
+              "EditorCaption": ""
             }
           ]
         }
