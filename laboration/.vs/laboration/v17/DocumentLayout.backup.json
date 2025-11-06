@@ -34,9 +34,9 @@
               "Title": "lab5.cpp",
               "DocumentMoniker": "C:\\github\\-\\laboration\\lab5\\lab5.cpp",
               "RelativeDocumentMoniker": "lab5\\lab5.cpp",
-              "ToolTip": "C:\\github\\-\\laboration\\lab5\\lab5.cpp*",
-              "RelativeToolTip": "lab5\\lab5.cpp*",
-              "ViewState": "AgIAABwAAAAAAAAAAAAuwC0AAAAaAAAAAAAAAA==",
+              "ToolTip": "C:\\github\\-\\laboration\\lab5\\lab5.cpp",
+              "RelativeToolTip": "lab5\\lab5.cpp",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-27T18:08:03.315Z",
               "IsPinned": true,
@@ -52,8 +52,7 @@
               "RelativeToolTip": "lab4\\lab4.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-25T07:16:02.719Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-25T07:16:02.719Z"
             },
             {
               "$type": "Document",
@@ -77,8 +76,7 @@
               "RelativeToolTip": "lab1\\lab1.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-09-25T16:02:46.485Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T16:02:46.485Z"
             }
           ]
         }

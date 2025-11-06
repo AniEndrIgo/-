@@ -1,4 +1,4 @@
 ﻿  lab5.cpp
 C:\github\-\laboration\lab5\lab5.cpp(26,15): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\github\-\laboration\lab5\lab5.cpp(55,9): warning C4101: a: неиспользованная локальная переменная
+C:\github\-\laboration\lab5\lab5.cpp(60,13): warning C4101: a: неиспользованная локальная переменная
   lab5.vcxproj -> C:\github\-\laboration\x64\Debug\lab5.exe

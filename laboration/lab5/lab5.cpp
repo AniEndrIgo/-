@@ -33,6 +33,7 @@ int main() {
     setlocale(LC_ALL, "Russian");
     const int A = 3;
     int mss[A];
+    std::cout << "введи от 2 до 3 чисел - ";
     for (int i = 0; i < A; i++) {
         std::cin >> mss[i];
     }
@@ -42,27 +43,35 @@ int main() {
             cnt -= 1;
         }
     }
-    for (int i = 0; i < 3; i++) {
-        if (mss[i] == 0) {
-            for (int j = i + 1; j < 3; j++) {
-                if (mss[j] != 0) {
-                    std::swap(mss[i], mss[j]);
-                    break;
+    std::cout << "выбери пункт действий(1 или 2):";
+    int u;
+    std::cin >> u;
+    if (u == 1) {
+        for (int i = 0; i < 3; i++) {
+            if (mss[i] == 0) {
+                for (int j = i + 1; j < 3; j++) {
+                    if (mss[j] != 0) {
+                        std::swap(mss[i], mss[j]);
+                        break;
+                    }
                 }
             }
         }
-    }
-    int a;
-    if ((cnt == 2 || cnt == 3)) {
-        if (cnt == 2) {
-            std::cout << "a+2b+3="  << for2(mss[0], mss[1]);
+        int a;
+        if ((cnt == 2 || cnt == 3)) {
+            if (cnt == 2) {
+                std::cout << "a+2b+3=" << for2(mss[0], mss[1]);
+            }
+            if (cnt == 3) {
+                std::cout << "максимальное из попарных сумм = " << for3a(mss[0], mss[1], mss[2]);
+            }
         }
-        if (cnt == 3) {
-            std::cout << "максимальное из попарных сумм = " << for3a(mss[0], mss[1], mss[2]);
+        else {
+            std::cout << "введенные числа не подходят!";
         }
     }
-    else {
-        std::cout << "введенные числа не подходят!";
+    if (u == 2) {
+        l1(mss[0], mss[1], mss[2]);
     }
-    l1(mss[0], mss[1], mss[2]);
+    
 }
