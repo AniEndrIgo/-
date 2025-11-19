@@ -3,16 +3,18 @@
 
 int* onemss(int** mss, int strok, int stolb) { //первая функция из условия
     int pos = 0;
-    int* nullstolb = (int*)calloc(stolb, sizeof(int));
+    int* nullstolb = (int*)calloc(stolb + 1, sizeof(int));
     for (int j = 0; j < stolb; j++) {
         for (int i = 0; i < strok; i++) {
             if (mss[i][j] == 0) {
-                nullstolb[pos] = j+1;
+                nullstolb[pos] = j + 1;
                 pos += 1;
                 break;
             }
         }
     }
+    nullstolb[pos] = 0;
+    nullstolb = (int*)realloc(nullstolb, (pos + 1) * sizeof(int));
     return nullstolb;
 }
 
@@ -20,7 +22,7 @@ int* onemss(int** mss, int strok, int stolb) { //первая функция и�
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    int** mss = (int**)calloc(2, sizeof(int**));
+    int** mss = (int**)calloc(2, sizeof(int*));
     for (int i = 0; i < 2; i++) {
         mss[i] = (int*)calloc(2, sizeof(int));
     }
@@ -35,7 +37,7 @@ int main() {
             free(mss[0]);
             free(mss[1]);
             free(mss);
-            mss = (int**)calloc(2, sizeof(int**));
+            mss = (int**)calloc(2, sizeof(int*));
             for (int i = 0; i < 2; i++) {
                 mss[i] = (int*)calloc(2, sizeof(int));
             }
@@ -60,7 +62,7 @@ int main() {
     }
     for (int i = 0; i < nstrok; i++) {
         for (int j = 2; j < nstolb; j++) {
-            mss[i][j] = (i - 1) * C + (j - 1) * D;//для формулы заполнения у меня не хватит мозгов так, что попросил у дипсика
+            mss[i][j] = (i - 1) * C + (j - 1) * D;
         }
     }
     for (int i = 2; i < nstrok; i++) {
@@ -68,66 +70,83 @@ int main() {
             mss[i][j] = (i - 1) * C + (j - 1) * D;
         }
     }
-    //for (int i = 0; i < nstrok; i++) {
-    //    std::cout << "| ";
-    //    for (int j = 0; j < nstolb; j++) {
-    //        std::cout << mss[i][j] << "\t";
-    //    }
-    //    std::cout << "|" << std::endl;
-    //}//вывод оригинальной матрицы
-
-    for (int i = 0; i < nstrok; i++) {//вывод матрицы с игнорированием столбцов с нулями
-        std::cout << "| ";
-        for (int j = 0; j < nstolb; j++) {
-            bool h = false;
-            for (int k = 0; k < nstrok; k++) {
-                if (mss[k][j] == 0) {
-                    h = true;
-                    break;
-                }
-            }
-            if (!h) {
-                std::cout << mss[i][j] << "\t";
-            }
-        }
-        std::cout << "|" << std::endl;
-    }
     int* xc = onemss(mss, nstrok, nstolb);
     std::cout << "Столбцы с нулями = ";
     bool n = false;
-    for (int i = 0; i < nstolb; i++) {
-        if (xc[i] != 0) {
-            std::cout << xc[i] << " ";
-            n = true;
-        }
+    for (int i = 0; xc[i] != 0; i++) {
+        std::cout << xc[i] << " ";
+        n = true;
     }
     if (n == false) {
         std::cout << "таких нету";
     }
+    std::cout << std::endl;
+    for (int j = 0; j < nstolb; j++) {
+        bool h = false;
+        for (int i = 0; i < nstrok; i++) {
+            if (mss[i][j] == 0) {
+                h = true;
+                break;
+            }
+        }
+        if (h) {
+            int swap = -1;
+            for (int k = j + 1; k < nstolb; k++) {
+                bool kh = false;
+                for (int i = 0; i < nstrok; i++) {
+                    if (mss[i][k] == 0) {
+                        kh = true;
+                        break;
+                    }
+                }
+                if (!kh) {
+                    swap = k;
+                    break;
+                }
+            }
+            if (swap != -1) {
+                for (int i = 0; i < nstrok; i++) {
+                    int seyf = mss[i][j];
+                    mss[i][j] = mss[i][swap];
+                    mss[i][swap] = seyf;
+                }
+            }
+        }
+    }
+    int kfulls = 0;
+    for (int j = 0; j < nstolb; j++) {
+        bool h = false;
+        for (int i = 0; i < nstrok; i++) {
+            if (mss[i][j] == 0) {
+                h = true;
+                break;
+            }
+        }
+        if (!h) {
+            kfulls += 1;
+        }
+    }
+    if (kfulls < nstolb) {
+        for (int i = 0; i < nstrok; i++) {
+            mss[i] = (int*)realloc(mss[i], kfulls * sizeof(int));
+            if (mss[i] == nullptr) {
+                std::cerr << "у нас больше нет матрицы" << std::endl;
+                return 1;
+            }
+        }
+        nstolb = kfulls;
+    }
+    for (int i = 0; i < nstrok; i++) {
+        std::cout << "| ";
+        for (int j = 0; j < nstolb; j++) {
+            std::cout << mss[i][j] << "\t";
+        }
+        std::cout << "|" << std::endl;
+    }
+
     free(xc);
     for (int i = 0; i < nstrok; i++) {
         free(mss[i]);
     }
     free(mss);
-
-    //int a, b;
-    //std::cin >> a >> b;
-
-    //int* A = new int;
-    //int* B = new int;
-    //*A = a;
-    //*B = b;
-
-    //*A = *A * 3;
-    //b = *A;
-    //a = *B;
-    //std::cout << "a = " << a << " b = " << b << std::endl;
-
-    //int AA = *A;
-    //*A = *B;
-    //*B = AA;
-    //std::cout << "a = " << a << " b = " << b << std::endl;
-
-    //delete A;
-    //delete B;
 }
