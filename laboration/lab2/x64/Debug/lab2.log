@@ -1,2 +1,2 @@
 ﻿  lab2.cpp
-  lab2.vcxproj -> C:\github\-\laboration\x64\Debug\lab2.exe
+C:\github\-\laboration\lab2\lab2.cpp(153,1): error C1071: непредвиденное обнаружение конца файла в комментарии
