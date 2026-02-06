@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\github\\-\\laboration sem2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:lekcia\\lekcia.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "lekcia.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp",
+              "RelativeDocumentMoniker": "lekcia\\lekcia.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp",
+              "RelativeToolTip": "lekcia\\lekcia.cpp",
+              "ViewState": "AgIAACYAAAAAAAAAAAAmwDoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-23T04:36:24.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "lab1.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp",
+              "RelativeDocumentMoniker": "lab1\\lab1.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp",
+              "RelativeToolTip": "lab1\\lab1.cpp",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAUwMAAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-23T04:35:26.187Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
