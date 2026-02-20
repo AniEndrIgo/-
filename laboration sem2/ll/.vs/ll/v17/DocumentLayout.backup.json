@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\github\\-\\laboration sem2\\ll\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|C:\\github\\-\\laboration sem2\\ll\\ll\\blank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|solutionrelative:ll\\blank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|C:\\github\\-\\laboration sem2\\ll\\ll\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|solutionrelative:ll\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|C:\\github\\-\\laboration sem2\\ll\\ll\\blank.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C39E39B1-2440-47C7-9DF9-93678CEA247C}|ll\\ll.vcxproj|solutionrelative:ll\\blank.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "blank.hpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\ll\\ll\\blank.hpp",
+              "RelativeDocumentMoniker": "ll\\blank.hpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\ll\\ll\\blank.hpp",
+              "RelativeToolTip": "ll\\blank.hpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-20T02:17:22.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "blank.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\ll\\ll\\blank.cpp",
+              "RelativeDocumentMoniker": "ll\\blank.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\ll\\ll\\blank.cpp*",
+              "RelativeToolTip": "ll\\blank.cpp*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAB4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-20T02:17:11.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "lab2.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\ll\\ll\\lab2.cpp",
+              "RelativeDocumentMoniker": "ll\\lab2.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\ll\\ll\\lab2.cpp",
+              "RelativeToolTip": "ll\\lab2.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEUAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-02-20T02:17:04.369Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

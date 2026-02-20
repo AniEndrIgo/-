@@ -1,0 +1,144 @@
+﻿#include "blank.hpp"
+#include <iostream>
+#include <exception>
+#include <string>
+#include <algorithm>
+
+namespace mt {
+	Blank::Blank() : name_("igor"), surname_("androsov"), dolgs_{ "matematika", "fizika" } {
+		std::cerr << "ctor = default" << std::endl;
+	}
+	Blank::Blank(const std::string& name_, const std::string& surname_, const std::vector<std::string>& dolgs) {
+		std::cerr << "ctor = full" << std::endl;
+
+		set_name(name_);
+		set_surname(surname_);
+		set_dolgs(dolgs);
+	}
+	Blank::Blank(const Blank& other) {
+		std::cerr << "ctor = copy" << std::endl;
+		name_ = other.name_;
+		surname_ = other.surname_;
+		dolgs_ = other.dolgs_;
+	}
+	Blank::~Blank() {
+		std::cerr << "dtor runned" << std::endl;
+		dolgs_.clear();
+		std::cerr << "dtor finished" << std::endl;
+	}
+
+	Blank& Blank::operator=(const Blank& other) {
+		std::cerr << "\nOOOOO OPERATOR (=) !!!!!!!!!!!!!!!!" << std::endl;
+
+		if (this != &other) {
+			name_ = other.name_;
+			surname_ = other.surname_;
+			dolgs_ = other.dolgs_;
+		}
+		return *this;
+	}
+
+	Blank Blank::operator+(const Blank& other) const {
+		std::cerr << "\nOOOOO OPERATOR (+) !!!!!!!!!!!!!!!!" << std::endl;
+
+		std::string new_name = name_ + " и " + other.name_;
+		std::string new_surname = surname_ + " и " + other.surname_;
+		std::vector<std::string> new_dolgs = merge(dolgs_, other.dolgs_);
+
+		return Blank(new_name, new_surname, new_dolgs);
+	}
+
+	Blank& Blank::operator-=(const Blank& other) {
+		std::cerr << "\nOOOOO OPERATOR (-=) !!!!!!!!!!!!!!!!" << std::endl;
+
+		name_ = name_ + " без долгов " + other.name_ + "a";
+		surname_ = surname_ + " без долгов " + other.surname_ + "a";
+		dolgs_ = down(dolgs_, other.dolgs_);
+
+		return *this;
+	}
+
+	Blank Blank::operator/(const Blank& other) const {
+		std::cerr << "\nOOOOO OPERATOR (/) !!!!!!!!!!!!!!!!" << std::endl;
+
+		std::string new_name = name_ + " и " + other.name_;
+		std::string new_surname = surname_ + " и " + other.surname_;
+		std::vector<std::string> new_dolgs = detect(dolgs_, other.dolgs_);
+
+		return Blank(new_name, new_surname, new_dolgs);
+	}
+
+	void Blank::set_name(const std::string& name) {
+		if (name.empty()) {
+			throw std::invalid_argument("name no have");
+		}
+		name_ = name;
+	}
+	void Blank::set_surname(const std::string& surname) {
+		if (surname.empty()) {
+			throw std::invalid_argument("surname no have");
+		}
+		surname_ = surname;
+	}
+	void Blank::set_dolgs(const std::vector<std::string>& dolgs) { dolgs_ = dolgs; }
+	void Blank::add_dolg(const std::string& dolg) {
+		if (dolg.empty()) {
+			throw std::invalid_argument("dolg no have");
+		}
+		dolgs_.push_back(dolg);
+	}
+	std::string Blank::get_name() const { return name_; }
+	std::string Blank::get_surname() const { return surname_; }
+	std::vector<std::string> Blank::get_dolgs() const {return dolgs_;}
+	void Blank::printInfo() const {
+		std::cout << "Досье:" << std::endl;
+		std::cout << "Имя: " << name_ << std::endl;
+		std::cout << "Фамилия: " << surname_ << std::endl;
+		std::cout << "Долги: ";
+		if (dolgs_.empty()) {
+			std::cout << "нет";
+		}
+		else {
+			for (size_t i = 0; i < dolgs_.size(); ++i) {
+				std::cout << dolgs_[i];
+				if (i < dolgs_.size() - 1) std::cout << ", ";
+			}
+		}
+		std::cout << std::endl;
+	}
+	std::vector<std::string> Blank::merge(const std::vector<std::string>& v1, const std::vector<std::string>& v2) {
+		std::vector<std::string> result = v1;
+
+		for (const auto& item : v2) {
+			if (std::find(result.begin(), result.end(), item) == result.end()) {
+				result.push_back(item);
+			}
+		}
+
+		return result;
+	}
+	std::vector<std::string> Blank::down(const std::vector<std::string>& v1, const std::vector<std::string>& v2) {
+		std::vector<std::string> result;
+
+		for (const auto& item : v1) {
+			if (std::find(v2.begin(), v2.end(), item) == v2.end()) {
+				result.push_back(item);
+			}
+		}
+
+		return result;
+	}
+	std::vector<std::string> Blank::detect(const std::vector<std::string>& v1, const std::vector<std::string>& v2) {
+		std::vector<std::string> result;
+
+		for (const auto& item : v1) {
+			if (std::find(v2.begin(), v2.end(), item) != v2.end()) {
+				if (std::find(result.begin(), result.end(), item) == result.end()) {
+					result.push_back(item);
+				}
+			}
+		}
+
+		return result;
+	}
+}
