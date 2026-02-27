@@ -5,8 +5,15 @@
 #include <algorithm>
 
 namespace mt {
-	Blank::Blank() : name_("igor"), surname_("androsov"), dolgs_{ "matematika", "fizika" } {
+	Blank::Blank() : name_("igor"), surname_("androsov"), dolgs_{ "matematika", "fizika", "fizika"} {
 		std::cerr << "ctor = default" << std::endl;
+		std::vector<std::string> double_dolgs;
+		for (const auto& item : dolgs_) {
+			if (std::find(double_dolgs.begin(), double_dolgs.end(), item) == double_dolgs.end()) {
+				double_dolgs.push_back(item);
+			}
+		}
+		dolgs_ = double_dolgs;
 	}
 	Blank::Blank(const std::string& name_, const std::string& surname_, const std::vector<std::string>& dolgs) {
 		std::cerr << "ctor = full" << std::endl;
@@ -22,7 +29,6 @@ namespace mt {
 		dolgs_ = other.dolgs_;
 	}
 	Blank::~Blank() {
-		std::cerr << "dtor runned" << std::endl;
 		dolgs_.clear();
 		std::cerr << "dtor finished" << std::endl;
 	}
@@ -80,12 +86,21 @@ namespace mt {
 		}
 		surname_ = surname;
 	}
-	void Blank::set_dolgs(const std::vector<std::string>& dolgs) { dolgs_ = dolgs; }
+	void Blank::set_dolgs(const std::vector<std::string>& dolgs) {
+		dolgs_.clear();
+		for (const auto& dolg : dolgs) {
+			if (std::find(dolgs_.begin(), dolgs_.end(), dolg) == dolgs_.end()) {
+				dolgs_.push_back(dolg);
+			}
+		}
+	}
 	void Blank::add_dolg(const std::string& dolg) {
 		if (dolg.empty()) {
 			throw std::invalid_argument("dolg no have");
 		}
-		dolgs_.push_back(dolg);
+		if (std::find(dolgs_.begin(), dolgs_.end(), dolg) == dolgs_.end()) {
+			dolgs_.push_back(dolg);
+		}
 	}
 	std::string Blank::get_name() const { return name_; }
 	std::string Blank::get_surname() const { return surname_; }

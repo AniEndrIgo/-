@@ -6,9 +6,7 @@ public:
 	Blank(): name_("igor"), surname_("androsov"), direction_("informatika & matematika"), curs_(1), group_(2), var_(1) {
 		std::cerr << "ctor = default" << std::endl;
 	}
-	Blank(const std::string& name_, const std::string& surname_,
-		const std::string& direction_, int curs_,
-		int group_, int var_) {
+	Blank(const std::string& name_, const std::string& surname_, const std::string& direction_, int curs_, int group_, int var_) {
 		std::cerr << "ctor = full" << std::endl;
 
 		set_name(name_);

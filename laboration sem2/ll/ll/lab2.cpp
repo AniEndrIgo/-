@@ -25,7 +25,7 @@ int main()
 	std::cout << "\nblank2:" << std::endl;
 	blank2.printInfo();
 
-	std::vector<std::string> dolgs3 = { "matanalyz", "istoria", "algebra" };
+	std::vector<std::string> dolgs3 = { "matanalyz", "istoria", "algebra", "algebra"};
 	mt::Blank blank3("anton", "ushakov", dolgs3);
 	std::cout << "\nblank3:" << std::endl;
 	blank3.printInfo();

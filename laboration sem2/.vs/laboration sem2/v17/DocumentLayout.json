@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\github\\-\\laboration sem2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:lab1\\lab1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\labtest\\blank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:labtest\\blank.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:lekcia\\lekcia.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\labtest\\blank.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:labtest\\blank.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\github\\-\\laboration sem2\\labtest\\labtest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:labtest\\labtest.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +22,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "lekcia.cpp",
-              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp",
-              "RelativeDocumentMoniker": "lekcia\\lekcia.cpp",
-              "ToolTip": "C:\\github\\-\\laboration sem2\\lekcia\\lekcia.cpp",
-              "RelativeToolTip": "lekcia\\lekcia.cpp",
-              "ViewState": "AgIAACYAAAAAAAAAAAAmwDoAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "blank.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\labtest\\blank.cpp",
+              "RelativeDocumentMoniker": "labtest\\blank.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\labtest\\blank.cpp",
+              "RelativeToolTip": "labtest\\blank.cpp",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T04:36:24.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T01:19:20.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "lab1.cpp",
-              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp",
-              "RelativeDocumentMoniker": "lab1\\lab1.cpp",
-              "ToolTip": "C:\\github\\-\\laboration sem2\\lab1\\lab1.cpp",
-              "RelativeToolTip": "lab1\\lab1.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL8AAAACAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "blank.h",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\labtest\\blank.h",
+              "RelativeDocumentMoniker": "labtest\\blank.h",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\labtest\\blank.h",
+              "RelativeToolTip": "labtest\\blank.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-02-20T01:18:59.729Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "labtest.cpp",
+              "DocumentMoniker": "C:\\github\\-\\laboration sem2\\labtest\\labtest.cpp",
+              "RelativeDocumentMoniker": "labtest\\labtest.cpp",
+              "ToolTip": "C:\\github\\-\\laboration sem2\\labtest\\labtest.cpp",
+              "RelativeToolTip": "labtest\\labtest.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-01-23T04:35:26.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-20T01:18:26.451Z"
             }
           ]
         }
