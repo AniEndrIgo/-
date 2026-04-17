@@ -1,9 +1,14 @@
 #include "card.h"
 #include <QDebug>
+#include "cardwindow.h"
+#include <QApplication>
+#include "ui_cardwindow.h"
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
 
 bool RuP::readFile(QTextStream& in, int& lineNum) {
     QString line = in.readLine();
-
     if (line.trimmed().isEmpty()) {
         lineNum++;
         return false;
@@ -31,16 +36,15 @@ bool RuP::readFile(QTextStream& in, int& lineNum) {
     return true;
 }
 
-QString RuP::Craft() const {
-    QString result = "ПРОПУСК\n\n";
-    result += "Фамилия: " + surname_ + "\n";
-    result += "Имя: " + name_ + "\n";
-    result += "Отчество: " + (patronymic_.isEmpty() ? "-" : patronymic_) + "\n";
-    result += "Дата рождения: " +
-              QString::number(day_).rightJustified(2, '0') + "." +
-              QString::number(month_).rightJustified(2, '0') + "." +
-              QString::number(year_);
-    return result;
+int RuP::Craft() const {
+    CardWindow* window = new CardWindow(const_cast<RuP*>(this), nullptr);
+    window->setAttribute(Qt::WA_DeleteOnClose);
+    window->fillWindow(const_cast<RuP*>(this));
+
+    int result = window->exec();  // ПОЛУЧАЕМ РЕЗУЛЬТАТ
+    delete window;  // УДАЛЯЕМ ОКНО (setAttribute не нужен)
+
+    return result;  // ВОЗВРАЩАЕМ 1 ЕСЛИ ПЕЧАТЬ, 0 ЕСЛИ ОТМЕНА
 }
 
 bool AmP::readFile(QTextStream& in, int& lineNum) {
@@ -73,14 +77,11 @@ bool AmP::readFile(QTextStream& in, int& lineNum) {
     return true;
 }
 
-QString AmP::Craft() const {
-    QString result = "ПРОПУСК\n\n";
-    result += "Имя: " + name_ + "\n";
-    result += "Второе имя: " + secondName_ + "\n";
-    result += "Фамилия: " + surname_ + "\n";
-    result += "Дата рождения: " +
-              QString::number(day_).rightJustified(2, '0') + "." +
-              QString::number(month_).rightJustified(2, '0') + "." +
-              QString::number(year_);
+int AmP::Craft() const {
+    CardWindow* window = new CardWindow(const_cast<AmP*>(this), nullptr);
+    window->fillWindow(const_cast<AmP*>(this));
+
+    int result = window->exec();
+    delete window;
     return result;
 }

@@ -6,7 +6,7 @@ class Card{
 public:
     Card() : code_(0), day_(0), month_(0), year_(0){}
     virtual ~Card(){}
-    virtual QString Craft() const = 0;
+    virtual int Craft() const = 0;
 
     int getCode_() const { return code_; }
     QString getSurname_() const { return surname_; }
@@ -25,7 +25,7 @@ protected:
 class RuP : public Card{
 public:
     bool readFile(QTextStream& in, int& lineNum);
-    QString Craft() const override;
+    int Craft() const override;
     QString getPatrnumic_() const { return patronymic_; }
 
 private:
@@ -35,7 +35,7 @@ private:
 class AmP : public Card{
 public:
     bool readFile(QTextStream& in, int& lineNum);
-    QString Craft() const override;
+    int Craft() const override;
     QString getSecondName() const { return secondName_; }
 
 private:

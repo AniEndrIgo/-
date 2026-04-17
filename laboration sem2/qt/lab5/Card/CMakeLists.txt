@@ -24,6 +24,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         card.h card.cpp
+        cardwindow.h cardwindow.cpp cardwindow.ui
+        dog.qrc
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Card APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

@@ -1,74 +1,39 @@
 #include "mainwindow.h"
+#include "./ui_mainwindow.h"
+#include "cardwindow.h"
 #include <QFileDialog>
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
-#include <QHeaderView>
-#include <QGroupBox>
-#include <QDialog>
-#include <QLabel>
-#include <QPushButton>
 
-MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
-    setupUI();
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    ui->Table->setSelectionBehavior(QAbstractItemView::SelectRows);//что бы выделить всю строку а не только часть
+    ui->Table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    setWindowTitle(" ");
+    ui->Table->horizontalHeader()->setStretchLastSection(true);
 }
 
-MainWindow::~MainWindow() {
-    clearCards();
+MainWindow::~MainWindow()
+{
+    delete ui;
 }
 
-void MainWindow::clearCards() {
-    for (Card* c : cards_) {
-        delete c;
+void MainWindow::clearCards()
+{
+    for (int i = 0; i < cards_.size(); ++i) {
+        delete cards_[i];
     }
     cards_.clear();
+
 }
 
-void MainWindow::setupUI() {
-    setWindowTitle(" ");
-    setFixedSize(600, 450);
-
-    QWidget* centralWidget = new QWidget(this);
-    setCentralWidget(centralWidget);
-
-    QVBoxLayout* mainLayout = new QVBoxLayout(centralWidget);
-
-    QGroupBox* groupBox = new QGroupBox(this);
-    groupBox->setTitle("");
-
-    QVBoxLayout* groupLayout = new QVBoxLayout(groupBox);
-
-    table = new QTableWidget(this);
-    table->setColumnCount(3);
-    table->setHorizontalHeaderLabels({""});
-    table->verticalHeader()->setVisible(false);
-    table->horizontalHeader()->setVisible(false);
-    table->setSelectionBehavior(QAbstractItemView::SelectRows);
-    table->setShowGrid(false);
-    groupLayout->addWidget(table);
-
-    mainLayout->addWidget(groupBox);
-
-    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-    loadButton = new QPushButton("Загрузить", this);
-    loadButton->setMinimumHeight(35);
-    loadButton->setStyleSheet("font-size: 14px; padding: 5px;");
-    mainLayout->addWidget(loadButton);
-
-    connect(loadButton, &QPushButton::clicked, this, &MainWindow::onLoadButtonClicked);
-    connect(table, &QTableWidget::cellDoubleClicked, this, &MainWindow::onTableDoubleClicked);
-}
-
-void MainWindow::onLoadButtonClicked() {
-    QString filename = QFileDialog::getOpenFileName(this, "Выберите файл", "", "Текстовые файлы (*.txt)");
-
-    if (!filename.isEmpty()) {
-        loadFromFile(filename);
-    }
-}
-
-void MainWindow::loadFromFile(const QString& filename) {
+void MainWindow::loadFromFile(const QString& filename)
+{
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QMessageBox::warning(this, "Ошибка", "Не удалось открыть файл!");
@@ -76,114 +41,119 @@ void MainWindow::loadFromFile(const QString& filename) {
     }
 
     clearCards();
+    ui->Table->setRowCount(0);
+
 
     QTextStream in(&file);
     int lineNum = 1;
-    int loadedCount = 0;
 
-    RuP* ru = new RuP();
-    if (ru->readFile(in, lineNum)) {
-        cards_.append(ru);
-        loadedCount++;
-    } else {
+    // Читаем файл построчно
+    while (!in.atEnd()) {
+        // Сохраняем позицию для возможного отката
+        QString line = in.readLine();
+
+        // Создаём временный поток для этой строки
+        QTextStream lineStream(&line);
+
+        // Пробуем прочитать как RuP (русский формат)
+        RuP* ru = new RuP();
+        QTextStream tempStream(&line);
+        int tempLineNum = lineNum;
+        if (ru->readFile(tempStream, tempLineNum)) {
+            cards_.append(ru);
+            lineNum++;
+            continue;
+        }
         delete ru;
-    }
 
-    AmP* am = new AmP();
-    if (am->readFile(in, lineNum)) {
-        cards_.append(am);
-        loadedCount++;
-    } else {
+        // Пробуем прочитать как AmP (американский формат)
+        AmP* am = new AmP();
+        tempStream.seek(0);
+        tempLineNum = lineNum;
+        if (am->readFile(tempStream, tempLineNum)) {
+            cards_.append(am);
+            lineNum++;
+            continue;
+        }
         delete am;
+
+        // Если ни один формат не подошёл, просто пропускаем строку
+        lineNum++;
     }
 
     file.close();
 
     if (cards_.isEmpty()) {
-        QMessageBox::warning(this, "Ошибка", "Не удалось загрузить данные!");
+        QMessageBox::warning(this, "Ошибка", "Не удалось загрузить данные из файла!\nПроверьте формат строк.");
     } else {
         updateTable();
-        QMessageBox::information(this, "Успех", QString("Загружено %1 записей").arg(cards_.size()));
+        QMessageBox::information(this, "Успех",
+                                 QString("Загружено %1 записей").arg(cards_.size()));
     }
 }
 
-void MainWindow::updateTable() {
-    table->setRowCount(cards_.size());
+void MainWindow::updateTable()
+{
+    ui->Table->setRowCount(cards_.size());
 
     for (int i = 0; i < cards_.size(); i++) {
         Card* c = cards_[i];
 
         RuP* ru = dynamic_cast<RuP*>(c);
         if (ru) {
-            QString fullName = ru->getSurname_() + " " + ru->getName_();
-            table->setItem(i, 0, new QTableWidgetItem(fullName));
-            table->setItem(i, 1, new QTableWidgetItem(ru->getPatrnumic_().isEmpty() ? "-" : ru->getPatrnumic_()));
+            // Русский формат: фамилия, имя, отчество
+            ui->Table->setItem(i, 0, new QTableWidgetItem(ru->getSurname_()));
+            ui->Table->setItem(i, 1, new QTableWidgetItem(ru->getName_()));
+            ui->Table->setItem(i, 2, new QTableWidgetItem(
+                                         ru->getPatrnumic_().isEmpty() ? "-" : ru->getPatrnumic_()));
         } else {
             AmP* am = dynamic_cast<AmP*>(c);
             if (am) {
-                QString fullName = am->getName_() + " " + am->getSurname_();
-                table->setItem(i, 0, new QTableWidgetItem(fullName));
-                table->setItem(i, 1, new QTableWidgetItem(am->getSecondName()));
+                // Американский формат: фамилия, имя, второе имя
+                ui->Table->setItem(i, 0, new QTableWidgetItem(am->getSurname_()));
+                ui->Table->setItem(i, 1, new QTableWidgetItem(am->getName_()));
+                ui->Table->setItem(i, 2, new QTableWidgetItem(
+                                             am->getSecondName().isEmpty() ? "-" : am->getSecondName()));
             }
         }
-
-        QString dateStr = QString::number(c->getDay_()).rightJustified(2, '0') + "." + QString::number(c->getMonth_()).rightJustified(2, '0') + "." + QString::number(c->getYear_());
-        table->setItem(i, 2, new QTableWidgetItem(dateStr));
+        int day = c->getDay_();
+        int month = c->getMonth_();
+        int year = c->getYear_();
+        // Дата рождения в 4-й колонке
+        QString dateStr = QString::number(day).rightJustified(2, '0') + "." +
+                          QString::number(month).rightJustified(2, '0') + "." +
+                          QString::number(year);
+        ui->Table->setItem(i, 3, new QTableWidgetItem(dateStr));
     }
 
-    table->setColumnWidth(0, 250);
-    table->setColumnWidth(1, 150);
-    table->setColumnWidth(2, 120);
+    // Автоматическая высота строк
+    ui->Table->resizeRowsToContents();
+    ui->Table->resizeColumnsToContents();
 }
 
-void MainWindow::onTableDoubleClicked(int row, int column) {
+void MainWindow::on_pushButton_clicked()
+{
+    QString filename = QFileDialog::getOpenFileName(this, "Выберите файл с данными", "", "Текстовые файлы (*.txt);;Все файлы (*)");
+
+    if (!filename.isEmpty()) {
+        loadFromFile(filename);
+    }
+}
+void MainWindow::on_Table_cellDoubleClicked(int row, int column)
+{
     Q_UNUSED(column);
 
     if (row < 0 || row >= cards_.size()) return;
 
-    Card* c = cards_[row];
+    Card* card = cards_[row];
+    if (!card) return;
 
-    QDialog* dialog = new QDialog(this);
-    dialog->setWindowTitle("Карточка");
-    dialog->setMinimumSize(400, 300);
-    dialog->setModal(true);
+    int result = card->Craft();  // ТЕПЕРЬ ПОЛУЧАЕМ РЕЗУЛЬТАТ
 
-    QVBoxLayout* layout = new QVBoxLayout(dialog);
-
-    QLabel* titleLabel = new QLabel("<h2>ИНФОРМАЦИЯ</h2>", dialog);
-    titleLabel->setAlignment(Qt::AlignCenter);
-    layout->addWidget(titleLabel);
-
-    QLabel* infoLabel = new QLabel(c->Craft(), dialog);
-    infoLabel->setWordWrap(true);
-    infoLabel->setStyleSheet("font-size: 12pt; padding: 10px;");
-    layout->addWidget(infoLabel);
-
-    QHBoxLayout* buttonLayout = new QHBoxLayout();
-
-    QPushButton* cancelButton = new QPushButton("Отмена", dialog);
-    cancelButton->setMinimumHeight(35);
-    cancelButton->setStyleSheet("font-size: 12px; padding: 5px; background-color: #f44336; color: white; border-radius: 5px;");
-    buttonLayout->addWidget(cancelButton);
-
-    QPushButton* printButton = new QPushButton("Печать", dialog);
-    printButton->setMinimumHeight(35);
-    printButton->setStyleSheet("font-size: 12px; padding: 5px; background-color: #4CAF50; color: white; border-radius: 5px;");
-    buttonLayout->addWidget(printButton);
-
-    layout->addLayout(buttonLayout);
-
-    connect(cancelButton, &QPushButton::clicked, dialog, &QDialog::accept);
-
-    connect(printButton, &QPushButton::clicked, [this, row, dialog]() {
-        if (row >= 0 && row < cards_.size()) {
-            delete cards_[row];
-            cards_.removeAt(row);
-        }
+    if (result == QDialog::Accepted) {  // 1 - печать
+        delete cards_[row];
+        cards_.removeAt(row);
         updateTable();
-        dialog->accept();
-    });
-
-    dialog->exec();
-    delete dialog;
+    }
 }
+

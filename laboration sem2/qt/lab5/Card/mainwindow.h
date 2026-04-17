@@ -8,27 +8,29 @@
 #include <QHBoxLayout>
 #include <QVector>
 #include "card.h"
+QT_BEGIN_NAMESPACE
+namespace Ui {
+class MainWindow;
+}
+QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
-
-private:
-    QTableWidget* table;
-    QPushButton* loadButton;
-    QVector<Card*> cards_;
-
-    void setupUI();
-    void updateTable();
-    void clearCards();
-
-private slots:
-    void onLoadButtonClicked();
-    void onTableDoubleClicked(int row, int column);
-    void loadFromFile(const QString& filename);
-
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
+
+private:
+    Ui::MainWindow *ui;
+    QVector<Card*> cards_;
+
+    void updateTable();
+    void clearCards();
+    void loadFromFile(const QString& filename);
+private slots:
+    void on_pushButton_clicked();
+    void on_Table_cellDoubleClicked(int row, int column);
 };
 
 #endif
